@@ -1,0 +1,35 @@
+{
+  "name": "Simon",
+  "program": "Mechatronics Engineering, University of Waterloo",
+  "skills": [
+    "Python",
+    "C++",
+    "CAD (SolidWorks/Fusion 360)",
+    "Data analysis",
+    "Streamlit",
+    "SQLite",
+    "Git"
+  ],
+  "experience": [
+    {
+      "role": "Swim Instructor & Lifeguard",
+      "company": "Town of Oakville",
+      "description": "Taught swim lessons and ensured pool safety over three years, developing strong communication, responsibility under pressure, and certification in emergency response."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Electric Skateboard",
+      "description": "Designed and built a custom electric skateboard, involving motor/battery selection, mechanical assembly, and basic control electronics."
+    },
+    {
+      "name": "Tennis Ball Launcher",
+      "description": "Designing and building a mechanical tennis ball launcher (in progress), involving mechanism design and control of launch timing/speed."
+    },
+    {
+      "name": "Co-op Job Application Tracker & Matcher",
+      "description": "Built a Python/Streamlit tool that uses the Claude API to score job postings against a resume and track application status."
+    }
+  ],
+  "education": "B.A.Sc. Mechatronics Engineering, University of Waterloo, expected 2030"
+}
