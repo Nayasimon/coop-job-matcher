@@ -14,6 +14,8 @@ It's built with Python, Streamlit, and SQLite. It can also use the Claude API to
 
 ## Trying the demo
 
+[Try it here](https://nayasimon-coop-job-matcher.streamlit.app/)
+
 The demo starts with a made-up resume and three sample jobs. You can score them, add your own sample posting, or change an application status to see how it works.
 
 Everyone gets their own demo session. Changes can disappear when you reload, and the **Reset demo** button starts over.
