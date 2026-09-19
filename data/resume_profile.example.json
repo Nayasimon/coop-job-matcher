@@ -1,0 +1,25 @@
+{
+  "name": "Alex (fictional demo candidate)",
+  "skills": [
+    "Python",
+    "C++",
+    "SolidWorks",
+    "SQLite",
+    "Git",
+    "Data analysis"
+  ],
+  "education": "Engineering student at Example University",
+  "experience": [
+    {
+      "role": "Student lab assistant",
+      "company": "Example University",
+      "description": "Collected test data and automated reports with Python."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Robotics project",
+      "description": "Designed a chassis in SolidWorks and programmed a C++ controller."
+    }
+  ]
+}
