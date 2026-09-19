@@ -1,48 +1,44 @@
 # Co-op Job Matcher
 
-A project I built to help organize my co-op job search. You can paste in job postings, compare them with your resume, and keep track of where you've applied.
+I built this app to organize my co-op job search. It lets users save job postings, compare them with their resume, and track applications in one place. The full app also supports Claude AI for more detailed feedback on job fit.
 
-It can also use the Claude API to explain how well your resume matches a job.
+## Features
 
-## What it does
-
-- Saves job postings so they're all in one place
-- Compares jobs with the skills on your resume
-- Tracks applications, interviews, offers, and rejections
-- Lets you save notes and see upcoming deadlines
-- Filters and sorts jobs, and lets you download them as a CSV
+- Save and edit job postings
+- Compare job requirements with resume skills
+- Track applications, interviews, offers, and rejections
+- Add notes and view upcoming deadlines
+- Filter, sort, and export postings as a CSV
 
 ## Technical skills
 
-- **Python:** writing the scoring logic, application tracking, and code that connects everything together.
-- **Streamlit:** building forms, tabs, filters, buttons, progress bars, and the resume editor.
-- **SQL and SQLite:** storing, reading, updating, and deleting job postings, scores, and application notes.
-- **Claude API integration:** sending resumes and job descriptions to Claude and reading its responses.
-- **JSON:** saving resume profiles and checking the structure of AI responses.
-- **Text processing and regular expressions:** matching skill names in job descriptions for the offline scorer.
-- **Automated testing:** using Python's `unittest`, mocked API responses, and Streamlit's testing tools to check the app without spending API credits.
-- **Git and GitHub:** tracking changes and sharing the code.
-- **Streamlit Community Cloud:** deploying the public demo so people can try it in their browser.
+- **Python:** scoring logic, application tracking, and connecting the app's components.
+- **Streamlit:** forms, tabs, filters, progress bars, and the resume editor.
+- **SQL and SQLite:** storing and updating postings, scores, and application notes.
+- **Claude API integration:** sending resumes and job descriptions for analysis and processing the responses.
+- **JSON:** storing resume profiles and validating AI response formats.
+- **Text processing and regular expressions:** matching resume skills with terms in job descriptions.
+- **Automated testing:** checking app behaviour with `unittest`, simulated API responses, and Streamlit's testing tools.
+- **Git and GitHub:** version control and sharing the source code.
+- **Streamlit Community Cloud:** hosting the public demo.
 
-## Trying the demo
+## Live demo
 
-[Try it here](https://nayasimon-coop-job-matcher.streamlit.app/)
+[Try the demo](https://nayasimon-coop-job-matcher.streamlit.app/)
 
-The demo starts with a made-up resume and three sample jobs. You can score them, add your own sample posting, or change an application status to see how it works.
+The demo includes a fictional resume and three sample jobs. Users can score postings, add sample jobs, and update application statuses. Each visitor has a separate session, and the **Reset demo** button restores the sample data. Changes may be lost when the page reloads.
 
-Everyone gets their own demo session. Changes can disappear when you reload, and the **Reset demo** button starts over.
+Demo scores use keyword matching and do not require an API key. They measure how many resume skills appear in a posting, not the likelihood of receiving an offer.
 
-The demo uses basic keyword matching, so it doesn't need an API key. A high score just means more of the resume's skills appear in the posting. It doesn't tell you how likely you are to get hired.
-
-To run the demo locally:
+After installing the dependencies below, run the demo locally with:
 
 ```powershell
 python -m streamlit run demo_app.py
 ```
 
-## Running the full app
+## Local setup
 
-You'll need Python 3.11 or newer. Open a terminal in the project folder and run:
+Install Python 3.11 or newer, then open a terminal in the project folder. On Windows, run:
 
 ```powershell
 python -m venv .venv
@@ -50,33 +46,33 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-These commands are for Windows. On Mac or Linux, use `python3` to create the environment and `.venv/bin/python` for the next two commands.
+On Mac or Linux, use `python3` to create the environment and `.venv/bin/python` for the next two commands.
 
-If you've already set things up on Windows, you can also run:
+For an existing Windows setup, you can also use:
 
 ```powershell
 .\start.ps1
 ```
 
-Open the link printed in the terminal. The full app saves your jobs between visits. You can edit your resume in the **Resume** tab, then start adding postings.
+Open the link shown in the terminal. The full app saves jobs between sessions. Update your profile in the **Resume** tab, then add postings to begin comparing jobs.
 
-## Using Claude
+## Claude setup
 
-Keyword matching works without an account. If you want Claude to give a more detailed comparison:
+Offline matching works without an account. To enable Claude:
 
-1. Copy `.env.example` to `.env` if you don't already have one.
-2. Put your API key beside `ANTHROPIC_API_KEY=` in `.env`.
-3. Restart the app and choose **Claude AI** in the sidebar.
+1. Copy `.env.example` to `.env` if the file does not already exist.
+2. Add your API key after `ANTHROPIC_API_KEY=` in `.env`.
+3. Restart the app and select **Claude AI** in the sidebar.
 
-Claude sends your resume and the job posting to Anthropic, and API usage costs money. Keep your key in `.env`, not `.env.example`, and don't upload it to GitHub.
+Claude sends the resume and posting to Anthropic, and API charges apply. Keep the key in `.env`, not `.env.example`, and do not upload it to GitHub.
 
-Your saved jobs are in `data/postings.db`. Your resume is in `data/resume_profile.json`. Both are ignored by Git, along with `.env`.
+Jobs are saved in `data/postings.db`, and the resume is saved in `data/resume_profile.json`. These files and `.env` are excluded from Git.
 
-## Putting the demo online
+## Deployment
 
 On [Streamlit Community Cloud](https://share.streamlit.io/), select this repository, the `main` branch, and **`demo_app.py`**. Choose Python 3.12 and leave the secrets section empty.
 
-Use `demo_app.py` for the public version. `app.py` is the version for keeping your own jobs and resume on your computer.
+`demo_app.py` runs the public demo. `app.py` runs the personal version with saved jobs and optional Claude scoring.
 
 ## Tests
 
@@ -84,10 +80,10 @@ Use `demo_app.py` for the public version. `app.py` is the version for keeping yo
 python -m unittest discover -s tests -v
 ```
 
-The tests check things like saving jobs, updating applications, handling scoring errors, and keeping demo sessions separate. They use fake API responses, so running them doesn't spend any Claude credits.
+The tests cover job storage, application updates, scoring errors, and separate demo sessions. API responses are simulated, so tests do not use Claude credits.
 
-## Things I'd like to add
+## Future improvements
 
 - Better matching before sending jobs to Claude
-- Help drafting cover letters
-- Accounts so people can save their own jobs online
+- Support for drafting cover letters
+- User accounts for saving jobs online
